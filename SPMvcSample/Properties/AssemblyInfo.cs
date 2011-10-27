@@ -9,9 +9,9 @@ using System.Security;
 [assembly: AssemblyTitle("SPMvcSample")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Vadim Ivanov")]
 [assembly: AssemblyProduct("SPMvcSample")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCopyright("Copyright © Vadim Ivanov 2011")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 

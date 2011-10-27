@@ -8,9 +8,9 @@ using System.Runtime.InteropServices;
 [assembly: AssemblyTitle("SPMvc.Core")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("Microsoft")]
+[assembly: AssemblyCompany("Vadim Ivanov")]
 [assembly: AssemblyProduct("SPMvc.Core")]
-[assembly: AssemblyCopyright("Copyright © Microsoft 2011")]
+[assembly: AssemblyCopyright("Copyright © Vadim Ivanov")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
