@@ -27,38 +27,38 @@ namespace SPMvc.Core
                 return null;
 
             var typeCacheKey = string.Format("{0}_{1}Controller", area, controllerName);
-            if (!typesCache.TryGetValue(typeCacheKey, out type))
-            {
-                var namespaces = requestContext.RouteData.DataTokens["Namespaces"] as string[];
-                if (namespaces != null)
-                {
-                    foreach (var ns in namespaces)
-                    {
-                        var controllerType = GetControllerType(string.Format("{0}.{1}Controller", ns, controllerName));
-                        if (controllerType != null)
-                        {
-                            lock (syncObject)
-                            {
-                                if (!typesCache.ContainsKey(typeCacheKey))
-                                    typesCache.Add(typeCacheKey, controllerType);
-                            }
-                            return controllerType;
-                        }
-                    }
-                }
-            }
+            typesCache.TryGetValue(typeCacheKey, out type);
             return type;
         }
 
-        private Type GetControllerType(string fullName)
+        /// <summary>
+        /// Init controllers cache
+        /// </summary>
+        /// <param name="areaName"></param>
+        public static void Init(string areaName)
         {
-            var controllerType = from type in Assembly.GetExecutingAssembly().GetTypes()
-                                 where
-                                     type.FullName != null &&
-                                     type.FullName.Equals(fullName, StringComparison.OrdinalIgnoreCase)
-                                 select type;
+            AddControllersToCache(areaName, Assembly.GetCallingAssembly().GetTypes());
+        }
 
-            return controllerType.SingleOrDefault();
+        private static void AddControllersToCache(string areaName, IEnumerable<Type> types)
+        {
+            var controllerTypes = types.Where(IsControllerType);
+            foreach (var controllerType in controllerTypes)
+            {
+                var typeCacheKey = string.Format("{0}_{1}", areaName, controllerType.Name);
+                lock (syncObject)
+                {
+                    if (!typesCache.ContainsKey(typeCacheKey))
+                        typesCache.Add(typeCacheKey, controllerType);
+                }
+            }
+        }
+
+        private static bool IsControllerType(Type type)
+        {
+            return ((((type != null) && type.IsPublic) &&
+                     (type.Name.EndsWith("Controller", StringComparison.OrdinalIgnoreCase) && !type.IsAbstract)) &&
+                    typeof (IController).IsAssignableFrom(type));
         }
     }
 }

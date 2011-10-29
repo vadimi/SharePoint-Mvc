@@ -8,13 +8,16 @@ namespace SPMvc.Core
     /// </summary>
     public class Bootstrapper
     {
-        public virtual void Init(string webUrl)
+        public virtual void Init(RoutesMapper routesMapper)
         {
             //register view engine to find views in Layouts folder
             RegisterViewEngine();
 
-            //register routes
+            //controller factory
             SetControllerFactory();
+
+            //register routes
+            RegisterRoutes(routesMapper);
         }
 
         /// <summary>
@@ -29,7 +32,7 @@ namespace SPMvc.Core
         /// Registers routes for area application
         /// </summary>
         /// <param name="routesMapper"></param>
-        public virtual void RegisterRoutes(RoutesMapper routesMapper)
+        void RegisterRoutes(RoutesMapper routesMapper)
         {
             if (routesMapper == null)
                 throw new ArgumentNullException("routesMapper");
