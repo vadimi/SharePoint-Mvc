@@ -101,9 +101,13 @@
     <Content Include="Layouts\MvcApp\Views\Home\Index.aspx">
       <SubType>ASPXCodeBehind</SubType>
     </Content>
-    <Content Include="Layouts\MvcApp\Views\Shared\Error.aspx" />
+    <Content Include="Layouts\MvcApp\Views\Shared\Error.aspx">
+      <SubType>ASPXCodeBehind</SubType>
+    </Content>
     <Content Include="Layouts\MvcApp\Views\Shared\LogOnUserControl.ascx" />
-    <Content Include="MvcModule\Elements.xml" />
+    <Content Include="MvcModule\Elements.xml">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SPMvc.Core\SPMvc.Core.csproj">

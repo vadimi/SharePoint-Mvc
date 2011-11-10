@@ -31,7 +31,7 @@ namespace SPMvc.Core
         {
             areaContext.MapRoute(
                 string.Format("{0}_{1}", areaName, routeName),
-                string.Format("{0}/{1}", webUrl, url), defaults, namespaces);
+                string.Format("{0}/{1}", webUrl, url).TrimStart('/'), defaults, namespaces);
         }
 
         public abstract void RegisterRoutes();
