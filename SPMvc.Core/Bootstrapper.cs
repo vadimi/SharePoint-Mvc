@@ -1,5 +1,4 @@
-﻿using System;
-using System.Web.Mvc;
+﻿using System.Web.Mvc;
 
 namespace SPMvc.Core
 {
@@ -8,7 +7,18 @@ namespace SPMvc.Core
     /// </summary>
     public class Bootstrapper
     {
-        public virtual void Init(RoutesMapper routesMapper)
+        private readonly IAreaConfiguration configuration;
+
+        public Bootstrapper(IAreaConfiguration configuration)
+        {
+            this.configuration = configuration;
+        }
+
+        /// <summary>
+        /// register view engine, register controller factory and routes
+        /// </summary>
+        /// <param name="webUrl"></param>
+        public virtual void Init(string webUrl)
         {
             //register view engine to find views in Layouts folder
             RegisterViewEngine();
@@ -17,7 +27,7 @@ namespace SPMvc.Core
             SetControllerFactory();
 
             //register routes
-            RegisterRoutes(routesMapper);
+            RegisterRoutes(webUrl);
         }
 
         /// <summary>
@@ -31,13 +41,11 @@ namespace SPMvc.Core
         /// <summary>
         /// Registers routes for area application
         /// </summary>
-        /// <param name="routesMapper"></param>
-        void RegisterRoutes(RoutesMapper routesMapper)
+        /// <param name="webUrl"></param>
+        void RegisterRoutes(string webUrl)
         {
-            if (routesMapper == null)
-                throw new ArgumentNullException("routesMapper");
-
-            routesMapper.RegisterRoutes();
+            var routesMapper = new RoutesMapper(webUrl, configuration.AreaName);
+            configuration.RegisterRoutes(routesMapper);
         }
 
         /// <summary>

@@ -35,9 +35,10 @@ namespace SPMvc.Core
         /// Init controllers cache
         /// </summary>
         /// <param name="areaName"></param>
-        public static void Init(string areaName)
+        /// <param name="assembly">Assembly where to look controlles</param>
+        public static void Init(string areaName, Assembly assembly)
         {
-            AddControllersToCache(areaName, Assembly.GetCallingAssembly().GetTypes());
+            AddControllersToCache(areaName, assembly.GetTypes());
         }
 
         private static void AddControllersToCache(string areaName, IEnumerable<Type> types)
