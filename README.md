@@ -5,56 +5,58 @@ How to use this library
 -----------------------
 
 The source code contains two projects:
-**SPMvc.Core** - all base classes for ASP.NET MVC 2.0 integration with SharePoint 2010
-**SPMvcSample** - sample SharePoint solution that shows how to use the library and configure everything correctly
+
+- **SPMvc.Core** - all base classes for ASP.NET MVC 2.0 integration with SharePoint 2010
+- **SPMvcSample** - sample SharePoint solution that shows how to use the library and configure everything correctly
 
 ### Configuration steps
-Follow the following guide.
+#### Follow the following guide.
 
-1. Add SharePoint module with HttpHandler, for example App.ashx. The code behind of the handler should be the following:
+1\. Add SharePoint module with HttpHandler, for example App.ashx. The code behind of the handler should be the following:
 
+```cs
+    public class App : SPMvcHttpHandler<AppMvcConfiguration>
+    {
+    }
 ```
-public class App : SPMvcHttpHandler<AppMvcConfiguration>
-{
-}
-```
 
-2. Add AppMvcConfiguration class:
-```csharp
+Add AppMvcConfiguration class:
+
     public class AppMvcConfiguration : IAreaConfiguration
-	{
-		public string AreaName
-		{
-			get { return "mvcapp"; }
-		}
+    {
+        public string AreaName
+        {
+	        get { return "mvcapp"; }
+        }
 
-		public void RegisterRoutes(RoutesMapper routesMapper)
-		{
-			routesMapper.RegisterRoute("Home", "app.ashx/home", new { controller = "Home", action = "Index" });
-			routesMapper.RegisterRoute("About", "app.ashx/about", new { controller = "Home", action = "About" });
-		}
-	}
-```
+        public void RegisterRoutes(RoutesMapper routesMapper)
+        {
+	        routesMapper.RegisterRoute("Home", "app.ashx/home", new { controller = "Home", action = "Index" });
+	        routesMapper.RegisterRoute("About", "app.ashx/about", new { controller = "Home", action = "About" });
+        }
+    }
 
-3. Add controllers in exactly the same assembly where AppMvcConfiguration is defined:
 
-	public class HomeController : Controller
-	{
-		public ActionResult Index()
-		{
-			ViewData["Message"] = "Home action message";
-			return View();
-		}
+2\. Add controllers in exactly the same assembly where AppMvcConfiguration is defined:
 
-		public ActionResult About()
-		{
-			ViewData["Message"] = "About action message";
-			return View();
-		}
-	}
+    public class HomeController : Controller
+    {
+        public ActionResult Index()
+        {
+            ViewData["Message"] = "Home action message";
+            return View();
+        }
 
-4. All MVC content like views, scripts, styles, etc. should be added to **Layouts/MvcApp** folder. This is very important to name this directory exactly the same as the name of MVC Area!
-5. Deploy everything as Farm solution.
+        public ActionResult About()
+        {
+            ViewData["Message"] = "About action message";
+            return View();
+        }
+    }
+
+3\. All MVC content like views, scripts, styles, etc. should be added to **Layouts/MvcApp** folder. This is very important to name this directory exactly the same as the name of MVC Area!
+
+4\. Deploy everything as **Farm** solution.
 
 ### Result
 
