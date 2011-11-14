@@ -15,44 +15,47 @@ The source code contains two projects:
 1\. Add SharePoint module with HttpHandler, for example App.ashx. The code behind of the handler should be the following:
 
 ```cs
-    public class App : SPMvcHttpHandler<AppMvcConfiguration>
-    {
-    }
+public class App : SPMvcHttpHandler<AppMvcConfiguration>
+{
+}
 ```
 
 Add AppMvcConfiguration class:
 
-    public class AppMvcConfiguration : IAreaConfiguration
-    {
-        public string AreaName
-        {
-	        get { return "mvcapp"; }
-        }
+```cs
+public class AppMvcConfiguration : IAreaConfiguration
+{
+	public string AreaName
+	{
+		get { return "mvcapp"; }
+	}
 
-        public void RegisterRoutes(RoutesMapper routesMapper)
-        {
-	        routesMapper.RegisterRoute("Home", "app.ashx/home", new { controller = "Home", action = "Index" });
-	        routesMapper.RegisterRoute("About", "app.ashx/about", new { controller = "Home", action = "About" });
-        }
-    }
-
+	public void RegisterRoutes(RoutesMapper routesMapper)
+	{
+		routesMapper.RegisterRoute("Home", "app.ashx/home", new { controller = "Home", action = "Index" });
+		routesMapper.RegisterRoute("About", "app.ashx/about", new { controller = "Home", action = "About" });
+	}
+}
+```
 
 2\. Add controllers in exactly the same assembly where AppMvcConfiguration is defined:
 
-    public class HomeController : Controller
-    {
-        public ActionResult Index()
-        {
-            ViewData["Message"] = "Home action message";
-            return View();
-        }
+```cs
+public class HomeController : Controller
+{
+	public ActionResult Index()
+	{
+		ViewData["Message"] = "Home action message";
+		return View();
+	}
 
-        public ActionResult About()
-        {
-            ViewData["Message"] = "About action message";
-            return View();
-        }
-    }
+	public ActionResult About()
+	{
+		ViewData["Message"] = "About action message";
+		return View();
+	}
+}
+```
 
 3\. All MVC content like views, scripts, styles, etc. should be added to **Layouts/MvcApp** folder. This is very important to name this directory exactly the same as the name of MVC Area!
 
