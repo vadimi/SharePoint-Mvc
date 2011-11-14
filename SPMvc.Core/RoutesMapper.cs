@@ -42,9 +42,7 @@ namespace SPMvc.Core
         /// <param name="defaults">route defaults</param>
         public void RegisterRoute(string routeName, string url, object defaults)
         {
-            areaContext.MapRoute(
-                string.Format("{0}_{1}", areaName, routeName),
-                string.Format("{0}/{1}", webUrl, url).TrimStart('/'), defaults, null);
+            RegisterRoute(routeName, url, defaults, null);
         }
     }
 }
