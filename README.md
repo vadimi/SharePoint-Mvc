@@ -20,7 +20,7 @@ public class App : SPMvcHttpHandler<AppMvcConfiguration>
 }
 ```
 
-Add AppMvcConfiguration class:
+2\. Add AppMvcConfiguration class:
 
 ```cs
 public class AppMvcConfiguration : IAreaConfiguration
@@ -38,7 +38,7 @@ public class AppMvcConfiguration : IAreaConfiguration
 }
 ```
 
-2\. Add controllers in exactly the same assembly where AppMvcConfiguration is defined:
+3\. Add controllers in exactly the same assembly where AppMvcConfiguration is defined:
 
 ```cs
 public class HomeController : Controller
@@ -57,9 +57,9 @@ public class HomeController : Controller
 }
 ```
 
-3\. All MVC content like views, scripts, styles, etc. should be added to **Layouts/MvcApp** folder. This is very important to name this directory exactly the same as the name of MVC Area!
+4\. All MVC content like views, scripts, styles, etc. should be added to **Layouts/MvcApp** folder. This is very important to name this directory exactly the same as the name of MVC Area!
 
-4\. Deploy everything as **Farm** solution.
+5\. Deploy everything as **Farm** solution.
 
 ### Result
 
