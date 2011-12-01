@@ -78,3 +78,5 @@ To allow *.ashx handlers to be included into wsp package with replacement tokens
 	<TokenReplacementFileExtensions>ashx</TokenReplacementFileExtensions>
 </PropertyGroup>
 ```
+
+License: MIT [http://www.opensource.org/licenses/mit-license.php](http://www.opensource.org/licenses/mit-license.php)

@@ -49,12 +49,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Bootstrapper.cs" />
-    <Compile Include="IAreaConfiguration.cs" />
+    <Compile Include="SPMvcAreaRegistrationContext.cs" />
+    <Compile Include="SPMvcBootstrapper.cs" />
+    <Compile Include="ISPMvcAreaRegistration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="RoutesMapper.cs" />
     <Compile Include="SPMvcControllerFactory.cs" />
     <Compile Include="SPMvcHttpHandler.cs" />
+    <Compile Include="SPMvcViewEngine.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="key.snk" />

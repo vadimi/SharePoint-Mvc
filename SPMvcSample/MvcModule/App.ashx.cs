@@ -3,7 +3,7 @@ using SPMvcSample.Web;
 
 namespace SPMvcSample.MvcModule
 {
-    public class App : SPMvcHttpHandler<AppMvcConfiguration>
+    public class App : SPMvcHttpHandler<AppMvcRegistration>
     {
     }
 }
