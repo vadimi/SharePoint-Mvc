@@ -15,25 +15,25 @@ The source code contains two projects:
 1\. Add SharePoint module with HttpHandler, for example App.ashx. The code behind of the handler should be the following:
 
 ```cs
-public class App : SPMvcHttpHandler<AppMvcConfiguration>
+public class App : SPMvcHttpHandler<AppMvcRegistration>
 {
 }
 ```
 
-2\. Add AppMvcConfiguration class:
+2\. Add AppMvcRegistration class:
 
 ```cs
-public class AppMvcConfiguration : IAreaConfiguration
+public class AppMvcRegistration : ISPMvcAreaRegistration
 {
 	public string AreaName
 	{
 		get { return "mvcapp"; }
 	}
 
-	public void RegisterRoutes(RoutesMapper routesMapper)
+	public void RegisterRoutes(SPMvcAreaRegistrationContext context)
 	{
-		routesMapper.RegisterRoute("Home", "app.ashx/home", new { controller = "Home", action = "Index" });
-		routesMapper.RegisterRoute("About", "app.ashx/about", new { controller = "Home", action = "About" });
+		context.MapRoute("Home", "app.ashx/home", new { controller = "Home", action = "Index" });
+		context.MapRoute("About", "app.ashx/about", new { controller = "Home", action = "About" });
 	}
 }
 ```
