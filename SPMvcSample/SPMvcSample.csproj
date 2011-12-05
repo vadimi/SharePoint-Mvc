@@ -13,6 +13,7 @@
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{BB1F664B-9266-4fd6-B973-E1E44974B511};{14822709-B5A1-4724-98CA-57A101D1B079};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <SandboxedSolution>False</SandboxedSolution>
+    <AssemblyDeploymentTarget>GlobalAssemblyCache</AssemblyDeploymentTarget>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -70,9 +71,7 @@
       <FeatureId>{a9f62ec3-643a-45fb-a1a5-bb6a6d32ebed}</FeatureId>
     </None>
     <None Include="key.snk" />
-    <None Include="Layouts\MvcApp\Views\Shared\Site.Master">
-      <SubType>ASPXCodeBehind</SubType>
-    </None>
+    <None Include="Layouts\MvcApp\Views\Shared\Site.Master" />
     <None Include="Layouts\MvcApp\Views\Web.config" />
     <None Include="Layouts\SharePointProjectItem.spdata">
       <SharePointProjectItemId>{1d24574a-5280-43e7-9c4a-e3726b6588ea}</SharePointProjectItemId>
@@ -86,6 +85,7 @@
     </None>
     <None Include="Package\Package.Template.xml">
       <DependentUpon>Package.package</DependentUpon>
+      <SubType>Designer</SubType>
     </None>
   </ItemGroup>
   <ItemGroup />

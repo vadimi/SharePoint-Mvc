@@ -59,7 +59,7 @@ public class HomeController : Controller
 
 4\. All MVC content like views, scripts, styles, etc. should be added to **Layouts/MvcApp** folder. This is very important to name this directory exactly the same as the name of MVC Area!
 
-5\. Deploy everything as **Farm** solution.
+5\. Deploy everything as **Farm** solution. If you want this solution to be deployed to 'Bin' folder: follow these [instructions](https://github.com/vadimi/SharePoint-Mvc/wiki/SharePoint-Mvc-and-'Bin'-deployment).
 
 ### Result
 
